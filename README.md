@@ -45,7 +45,7 @@ La propuesta se adapta al contexto y a los objetivos de cada institución, mante
 
 La landing del proyecto está publicada en GitHub Pages:
 
-👉 https://lisandromeinet.github.io/juegos-narrativos/
+👉 [https://lisandromeinet.github.io/juegos-narrativos/](https://lisandromeinet.github.io/aventuras-en-juego/)
 
 Este repositorio contiene el código fuente del sitio web (HTML + CSS + assets).
 
