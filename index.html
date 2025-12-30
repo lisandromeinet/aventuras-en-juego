@@ -401,7 +401,7 @@
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
           <a class="btn primary" href="#taller">Ver el taller</a>
           <a class="btn" href="#donde">Instituciones</a>
-          <a class="btn" href="Aventuras-en-Juego.pdf">Descargar PDF</a>
+          <a class="btn" target="_blank" href="Aventuras-en-Juego.pdf">Descargar PDF</a>
         </div>
 
         <div class="note" style="margin-top:16px">
@@ -412,7 +412,6 @@
 
       <!-- Banner visual: pergamino + dragón silueta -->
       <aside class="card banner" aria-label="Resumen del taller">
-        <!-- Usa el dragón de tu referencia: guardalo como dragon-rojo.png -->
         <img class="dragon" src="dragon-rojo.png" alt="" />
 
         <div>
@@ -638,7 +637,7 @@
 
           <div class="tags" style="margin-top:14px">
             <span class="tag">📱 WhatsApp: <span class="mono">+54 9 11 5475 6069</span></span>
-            <span class="tag">📷 Instagram: <span class="mono"><a href="https://instagram.com/AventurasEnJuego">@AventurasEnJuego</a></span></span>
+            <span class="tag">📷 Instagram: <span class="mono"><a target="_blank" href="https://instagram.com/AventurasEnJuego">@AventurasEnJuego</a></span></span>
             <span class="tag">✉️ Email: <span class="mono">lmeinetpallares@gmail.com</span></span>
           </div>
 
@@ -668,11 +667,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // Si existe pergamino.jpg al lado del HTML, activamos el fondo real
     (function(){
       const img = new Image();
       img.onload = () => document.body.classList.add('has-parchment');
-      img.onerror = () => {}; // si no está, queda el fondo por CSS
+      img.onerror = () => {}; // si no está el archivo pergamino.jpg, queda el fondo por CSS
       img.src = "pergamino.jpg";
     })();
 
