@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aventuras en Juego — Taller de Rol (4 encuentros)</title>
+  <meta name="description" content="Aventuras en Juego: taller de juegos narrativos y de rol para infancias (7+). Un taller: 4 encuentros de 2 horas. Para escuelas, bibliotecas, librerías, ludotecas, ONGs y otras instituciones." />
+  
+  <style>
+    :root{
+      --ink:#1a1a1a;
+      --ink2:#2a2a2a;
+      --paper:#f4e6c9;
+      --paper2:#ecd9b2;
+      --accent:#8b0f12;     /* rojo profundo */
+      --accent2:#b22a2f;    /* rojo más vivo */
+      --line: rgba(0,0,0,.18);
+      --shadow: 0 18px 60px rgba(0,0,0,.20);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      background:
+        radial-gradient(900px 600px at 20% 0%, rgba(178,42,47,.10), transparent 55%),
+        radial-gradient(700px 500px at 80% 10%, rgba(0,0,0,.08), transparent 55%),
+        linear-gradient(180deg, var(--paper), var(--paper2));
+    }
+
+    /* Fondo pergamino real (si existe el archivo) */
+    body.has-parchment{
+      background:
+        linear-gradient(180deg, rgba(244,230,201,.65), rgba(236,217,178,.75)),
+        url("pergamino.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    a{ color:inherit; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:20px; }
+
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(8px);
+      background: rgba(244,230,201,.82);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+    }
+
+    .seal{
+      width:42px; height:42px; border-radius:14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(0,0,0,.28);
+      background: linear-gradient(135deg, rgba(178,42,47,.16), rgba(0,0,0,.06));
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      font-size:20px;
+    }
+
+    .brand .title{
+      font-weight:800;
+      letter-spacing:-.02em;
+      font-size:18px;
+      line-height:1.05;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+    .brand .subtitle{
+      font-size:12px;
+      color: rgba(0,0,0,.72);
+      margin-top:2px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+    nav a{
+      font-size:14px;
+      color: rgba(0,0,0,.72);
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    nav a:hover{
+      border-color: rgba(0,0,0,.20);
+      background: rgba(255,255,255,.35);
+      color: rgba(0,0,0,.9);
+    }
+
+    .cta{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.22);
+      background: rgba(255,255,255,.35);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .08s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn.primary{
+      border-color: rgba(139,15,18,.45);
+      background: linear-gradient(135deg, rgba(178,42,47,.18), rgba(0,0,0,.04));
+    }
+
+    .hero{
+      padding:42px 0 10px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .hero h1{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4.5vw, 54px);
+      letter-spacing:-.03em;
+      font-weight:900;
+    }
+
+    .hero p{
+      margin:0 0 14px;
+      font-size:16px;
+      color: rgba(0,0,0,.80);
+      max-width: 75ch;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height:1.55;
+    }
+
+    .pills{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.20);
+      background: rgba(255,255,255,.30);
+      font-size:13px;
+      color: rgba(0,0,0,.75);
+    }
+
+    .card{
+      border:1px solid rgba(0,0,0,.22);
+      background: rgba(255,255,255,.35);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Bloque visual estilo pergamino + dragón */
+    .banner{
+      position:relative;
+      overflow:hidden;
+      min-height: 320px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+      padding:18px;
+    }
+
+    .banner::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(178,42,47,.12), transparent 60%),
+        radial-gradient(700px 500px at 80% 20%, rgba(0,0,0,.12), transparent 60%);
+      pointer-events:none;
+    }
+
+    /* Dragón silueta (usar tu archivo) */
+    .dragon{
+      position:absolute;
+      right:-22px;
+      top:-20px;
+      width:min(360px, 56%);
+      opacity:.92;
+      transform: rotate(6deg);
+      filter: drop-shadow(0 16px 24px rgba(0,0,0,.25));
+      pointer-events:none;
+      user-select:none;
+    }
+
+    .banner h3{
+      position:relative;
+      margin:0;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .kpis{
+      position:relative;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+    .kpi{
+      border:1px solid rgba(0,0,0,.20);
+      background: rgba(255,255,255,.32);
+      border-radius:16px;
+      padding:12px;
+    }
+    .kpi .num{ font-weight:900; font-size:20px; color: var(--accent); }
+    .kpi .lbl{ font-size:12px; color: rgba(0,0,0,.70); margin-top:3px; }
+
+    .note{
+      position:relative;
+      border-left: 3px solid rgba(139,15,18,.55);
+      padding:10px 12px;
+      background: rgba(178,42,47,.08);
+      border-radius: 14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color: rgba(0,0,0,.78);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .section{ padding:22px 0; }
+    .section h2{
+      margin:0 0 10px;
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .section p.lead{
+      margin:0 0 14px;
+      color: rgba(0,0,0,.78);
+      max-width:85ch;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height:1.55;
+    }
+
+    .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .grid2{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+
+    .item h3{
+      margin:0 0 6px;
+      font-size:16px;
+      font-weight:900;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+    .item p{
+      margin:0;
+      color: rgba(0,0,0,.76);
+      font-size:14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height:1.55;
+    }
+
+    .tags{
+      display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+    .tag{
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.20);
+      background: rgba(255,255,255,.30);
+      color: rgba(0,0,0,.72);
+    }
+
+    ul.clean{
+      margin:10px 0 0;
+      padding-left:18px;
+      color: rgba(0,0,0,.78);
+      font-size:14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      line-height:1.6;
+    }
+
+    .faq details{
+      border:1px solid rgba(0,0,0,.22);
+      border-radius:16px;
+      background: rgba(255,255,255,.34);
+      padding:12px 14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+    .faq details + details{ margin-top:10px; }
+    .faq summary{ cursor:pointer; font-weight:900; }
+    .faq p{ margin:10px 0 0; color: rgba(0,0,0,.78); line-height:1.55; }
+
+    form{ display:grid; gap:10px; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif; }
+    label{ font-size:13px; color: rgba(0,0,0,.70); }
+    input, textarea, select{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.22);
+      background: rgba(255,255,255,.40);
+      color: rgba(0,0,0,.88);
+      padding:10px 12px;
+      outline:none;
+    }
+    textarea{ min-height:110px; resize:vertical; }
+    .two{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color: rgba(0,0,0,.70);
+      font-size:13px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    .toast{
+      position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
+      background: rgba(0,0,0,.78);
+      border:1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.95);
+      padding:10px 12px;
+      border-radius:14px;
+      backdrop-filter: blur(10px);
+      display:none;
+      max-width: min(560px, calc(100% - 24px));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+    .toast.show{ display:block; }
+
+    @media (max-width: 900px){
+      nav{ display:none; }
+      .hero{ grid-template-columns:1fr; }
+      .grid3{ grid-template-columns:1fr; }
+      .grid2{ grid-template-columns:1fr; }
+      .two{ grid-template-columns:1fr; }
+      .kpis{ grid-template-columns:1fr; }
+      .dragon{ width:min(320px, 72%); opacity:.88; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <div class="seal">🐉</div>
+        <div>
+          <div class="title">Aventuras en Juego</div>
+          <div class="subtitle">Taller de juegos narrativos y de rol (7+) · 4×2h</div>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación">
+        <a href="#taller">El taller</a>
+        <a href="#donde">Dónde se realiza</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="#contacto">Pedir propuesta</a>
+        <button class="btn primary" id="btnWhatsApp" type="button">WhatsApp</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Un espacio seguro y cuidado para crear historias compartidas.</h1>
+        <p>
+          <b>Aventuras en Juego</b> es un taller grupal donde las infancias crean historias a través de
+          juegos narrativos y de rol, promoviendo el disfrute, la creatividad y el desarrollo de
+          habilidades sociales: escucha, cooperación y resolución de conflictos.
+        </p>
+
+        <div class="pills" role="list">
+          <span class="pill" role="listitem">🎲 Juegos narrativos y de rol</span>
+          <span class="pill" role="listitem">🧒 Desde 7 años</span>
+          <span class="pill" role="listitem">🗓️ 4 encuentros</span>
+          <span class="pill" role="listitem">⏱️ 2 horas por semana</span>
+          <span class="pill" role="listitem">👥 Grupos reducidos</span>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+          <a class="btn primary" href="#taller">Ver el taller</a>
+          <a class="btn" href="#donde">Instituciones</a>
+        </div>
+
+        <div class="note" style="margin-top:16px">
+          <b>Foco único:</b> ofrecemos un solo taller, bien diseñado y replicable:
+          <b>taller "Aventuras en Juego" de 4 encuentros de 2 horas</b>.
+        </div>
+      </div>
+
+      <!-- Banner visual: pergamino + dragón silueta -->
+      <aside class="card banner" aria-label="Resumen del taller">
+        <!-- Usa el dragón de tu referencia: guardalo como dragon-rojo.png -->
+        <img class="dragon" src="dragon-rojo.png" alt="" />
+
+        <div>
+          <h3>Resumen del ciclo</h3>
+          <div class="tags">
+            <span class="tag">Creación de personajes</span>
+            <span class="tag">Improvisación</span>
+            <span class="tag">Escritura y dibujo</span>
+            <span class="tag">Historia + azar</span>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="num">4</div>
+            <div class="lbl">encuentros</div>
+          </div>
+          <div class="kpi">
+            <div class="num">2h</div>
+            <div class="lbl">por semana</div>
+          </div>
+          <div class="kpi">
+            <div class="num">7+</div>
+            <div class="lbl">edad sugerida</div>
+          </div>
+        </div>
+
+        <div class="note">
+          Hoy los espacios de juego presencial compartido se ven cada vez más reducidos.
+          Este taller busca abrir y sostener un lugar donde el juego, la imaginación y los vínculos
+          ocupen un lugar central.
+        </div>
+      </aside>
+    </section>
+
+    <!-- EL TALLER -->
+    <section class="section" id="taller">
+      <h2>El taller</h2>
+      <p class="lead">
+        <b>4 encuentros de 2 horas</b> para que el grupo cree una aventura compartida y la recorra en cuatro capítulos.
+        Cada encuentro combina juego, acuerdos, creación e integración final (sin moralina).
+      </p>
+
+      <div class="grid2">
+        <div class="card item">
+          <h3>¿Qué hacemos?</h3>
+          <ul class="clean">
+            <li>Creación de personajes y mundos (simple, accesible).</li>
+            <li>Juegos narrativos y de rol: interpretar, decidir, cooperar.</li>
+            <li>Dinámicas de improvisación y creatividad.</li>
+            <li>Escritura y dibujo como soporte de la historia.</li>
+            <li>Construcción colectiva con “ingrediente de azar” (dados).</li>
+          </ul>
+        </div>
+
+        <div class="card item">
+          <h3>¿Qué se llevan?</h3>
+          <ul class="clean">
+            <li>Más escucha y respeto por turnos.</li>
+            <li>Cooperación real (nadie “gana solo”).</li>
+            <li>Herramientas para negociar y resolver conflictos.</li>
+            <li>Confianza grupal (por continuidad del ciclo).</li>
+            <li>Un recuerdo: historia compartida y final épico.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:14px">
+        <b>Aclaración:</b> no es terapia. Es una propuesta lúdica y educativa con cuidados,
+        adecuada para instituciones vinculadas a infancias.
+      </div>
+    </section>
+
+    <!-- DONDE -->
+    <section class="section" id="donde">
+      <h2>Para instituciones vinculadas a infancias</h2>
+      <p class="lead">
+        El taller puede realizarse en <b>escuelas, bibliotecas, librerías, ludotecas, ONGs</b> y
+        <b>otras instituciones relacionadas con infancias</b>. Se adapta al objetivo del espacio y al grupo.
+      </p>
+
+      <div class="grid3">
+        <div class="card item">
+          <h3>🏫 Escuelas</h3>
+          <p>Convivencia, integración, proyectos de expresión, talleres complementarios.</p>
+          <div class="tags"><span class="tag">Aula / SUM</span><span class="tag">Ciclo 4 semanas</span></div>
+        </div>
+        <div class="card item">
+          <h3>📚 Bibliotecas</h3>
+          <p>Historias que se vuelven aventura: lectura, narración, participación.</p>
+          <div class="tags"><span class="tag">Cultura</span><span class="tag">Comunidad</span></div>
+        </div>
+        <div class="card item">
+          <h3>📖 Librerías</h3>
+          <p>Actividad cultural con cupo reducido y experiencia memorable.</p>
+          <div class="tags"><span class="tag">Evento</span><span class="tag">Cupo chico</span></div>
+        </div>
+      </div>
+
+      <div class="grid3" style="margin-top:14px">
+        <div class="card item">
+          <h3>🎲 Ludotecas</h3>
+          <p>Narrativa guiada + cooperación sostenida durante 4 encuentros.</p>
+          <div class="tags"><span class="tag">Juego</span><span class="tag">Imaginación</span></div>
+        </div>
+        <div class="card item">
+          <h3>🤝 ONGs</h3>
+          <p>Espacio cuidado para vínculo, pertenencia, habilidades sociales y expresión.</p>
+          <div class="tags"><span class="tag">Cuidado</span><span class="tag">Inclusión</span></div>
+        </div>
+        <div class="card item">
+          <h3>🏛️ Otras instituciones</h3>
+          <p>Centros culturales, clubes, espacios comunitarios y programas municipales.</p>
+          <div class="tags"><span class="tag">Adaptable</span><span class="tag">A medida</span></div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:14px">
+        <b>Requisito mínimo:</b> un espacio tranquilo con mesa y sillas (o piso con almohadones) y posibilidad de sostener
+        el ciclo completo de 4 encuentros.
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <h2>Preguntas frecuentes</h2>
+
+      <details>
+        <summary>¿Esto es terapia?</summary>
+        <p>No. Es un taller lúdico y educativo con marco cuidado. Puede favorecer habilidades socioemocionales, pero no reemplaza procesos terapéuticos.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué edades?</summary>
+        <p>Desde 7 años en adelante. Se ajusta complejidad, ritmo y recursos según el grupo.</p>
+      </details>
+
+      <details>
+        <summary>¿Cuántos participantes?</summary>
+        <p>Grupos reducidos para sostener calidad (sugerencia: 3 a 5 participantes). Si la institución requiere más cupos, podemos hacer una división en grupos con facilitación adicional o ampliando el horario.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué necesita la institución?</summary>
+        <p>Un espacio relativamente tranquilo, mesa/sillas o almohadones, y sostener el ciclo completo de 4 encuentros. Antes de empezar, se alinean objetivos y cuidados.</p>
+      </details>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <h2>Contacto</h2>
+      <p class="lead">
+        Escribinos para recibir una propuesta de implementación del ciclo completo (4 × 2 hs) en tu institución.
+        Este formulario genera un mensaje de WhatsApp.
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <form id="contactForm">
+            <div class="two">
+              <div>
+                <label for="nombre">Nombre y rol</label>
+                <input id="nombre" name="nombre" placeholder="Ej: Ana, bibliotecaria / docente / coordinador" required />
+              </div>
+              <div>
+                <label for="institucion">Institución</label>
+                <input id="institucion" name="institucion" placeholder="Ej: Biblioteca X / Escuela Y / ONG Z" required />
+              </div>
+            </div>
+
+            <div class="two">
+              <div>
+                <label for="tipo">Tipo de institución</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="">Elegí una opción…</option>
+                  <option>Escuela</option>
+                  <option>Biblioteca</option>
+                  <option>Librería</option>
+                  <option>Ludoteca</option>
+                  <option>ONG</option>
+                  <option>Otra institución vinculada a infancias</option>
+                </select>
+              </div>
+              <div>
+                <label for="ciudad">Ciudad</label>
+                <input id="ciudad" name="ciudad" placeholder="Ej: Buenos Aires" />
+              </div>
+            </div>
+
+            <div class="two">
+              <div>
+                <label for="edad">Edades</label>
+                <input id="edad" name="edad" placeholder="Ej: 7–10 / 9–12" />
+              </div>
+              <div>
+                <label for="cantidad">Cantidad estimada</label>
+                <input id="cantidad" name="cantidad" placeholder="Ej: 8" />
+              </div>
+            </div>
+
+            <div>
+              <label for="mensaje">Objetivo / contexto</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Ej: convivencia; actividad cultural; ciclo de vacaciones; grupo nuevo; etc."></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Enviar por WhatsApp</button>
+            <div style="font-size:12px;color: rgba(0,0,0,.70)">
+              WhatsApp se abre con un texto prearmado al número de Lisandro Meinet, el director de Aventuras en Juego.
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;font-weight:900">Datos</h3>
+          <p style="margin:0 0 12px;color: rgba(0,0,0,.76);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+          </p>
+
+          <div class="note">
+            <div><b>Actividad:</b> Taller Aventuras en Juego (4 encuentros de 2 horas)</div>
+            <div><b>Ámbitos:</b> escuelas, bibliotecas, librerías, ludotecas, ONGs y otras instituciones</div>
+            <div><b>Contacto:</b> WhatsApp directo</div>
+          </div>
+
+          <div class="tags" style="margin-top:14px">
+            <span class="tag">📱 WhatsApp: <span class="mono">+54 9 11 5475 6069</span></span>
+            <span class="tag">📷 Instagram: <span class="mono"><a href="https://instagram.com/AventurasEnJuego">@AventurasEnJuego</a></span></span>
+            <span class="tag">✉️ Email: <span class="mono">lmeinetpallares@gmail.com</span></span>
+          </div>
+
+          <div style="margin-top:14px">
+            <button class="btn" id="btnCopiar" type="button">Copiar texto corto</button>
+          </div>
+
+          <div style="margin-top:14px;color: rgba(0,0,0,.76);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; line-height:1.55">
+            <b>Texto corto:</b><br/>
+            “Taller Aventuras en Juego: 4 encuentros de 2 horas. Un espacio seguro y cuidado para crear historias compartidas a través de juegos narrativos y de rol.
+            Para escuelas, bibliotecas, librerías, ludotecas, ONGs y otras instituciones vinculadas a infancias.”
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="year"></span> Aventuras en Juego</div>
+        <div class="mono">by <b>Kleer</b> · Hacemos que pase, en equipo.</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Si existe pergamino.jpg al lado del HTML, activamos el fondo real
+    (function(){
+      const img = new Image();
+      img.onload = () => document.body.classList.add('has-parchment');
+      img.onerror = () => {}; // si no está, queda el fondo por CSS
+      img.src = "pergamino.jpg";
+    })();
+
+    const toastEl = document.getElementById('toast');
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(window.__t);
+      window.__t = setTimeout(()=>toastEl.classList.remove('show'), 2600);
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // WhatsApp de Lisandro (formato wa.me, sin +, sin espacios)
+    const WHATSAPP_NUMBER = "5491154756069";
+    const WA_BASE = "https://wa.me/" + WHATSAPP_NUMBER;
+
+    function openWhatsApp(text){
+      const url = WA_BASE + "?text=" + encodeURIComponent(text);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    document.getElementById('btnWhatsApp').addEventListener('click', () => {
+      openWhatsApp("Hola! Quiero recibir una propuesta para implementar el taller Aventuras en Juego (4 encuentros de 2 horas) en nuestra institución.");
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const institucion = document.getElementById('institucion').value.trim();
+      const tipo = document.getElementById('tipo').value.trim();
+      const ciudad = document.getElementById('ciudad').value.trim();
+      const edad = document.getElementById('edad').value.trim();
+      const cantidad = document.getElementById('cantidad').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+
+      const text =
+`Hola! Soy ${nombre}.
+Institución: ${institucion}
+Tipo: ${tipo}${ciudad ? "\nCiudad: " + ciudad : ""}${edad ? "\nEdades: " + edad : ""}${cantidad ? "\nCantidad estimada: " + cantidad : ""}
+
+Me interesa implementar el taller "Aventuras en Juego" (4 encuentros de 2 horas).
+${mensaje ? "\nContexto/objetivo:\n" + mensaje : ""}
+
+¿Me comparten propuesta, logística y arancel?`;
+
+      openWhatsApp(text);
+      toast("Listo: abrí WhatsApp con un mensaje prearmado.");
+    });
+
+    document.getElementById('btnCopiar').addEventListener('click', async () => {
+      const copyText =
+        "Taller Aventuras en Juego: 4 encuentros de 2 horas. Un espacio seguro y cuidado para crear historias compartidas a través de juegos narrativos y de rol. Para escuelas, bibliotecas, librerías, ludotecas, ONGs y otras instituciones vinculadas a infancias.";
+      try{
+        await navigator.clipboard.writeText(copyText);
+        toast("Copiado al portapapeles.");
+      }catch(err){
+        toast("No pude copiar automáticamente. Copialo manualmente desde el texto.");
+      }
+    });
+  </script>
+</body>
+</html>
+
