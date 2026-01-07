@@ -13,7 +13,7 @@ El proyecto ofrece **un taller**, diseñado para ser claro, replicable y con sen
 - **Taller de 4 encuentros**
 - **2 horas por semana**
 - **Grupos reducidos**
-- **Desde 7 años en adelante**
+- **Desde 8 a 16 años**
 
 Cada ciclo propone una aventura compartida que se desarrolla en cuatro capítulos, combinando:
 - creación de personajes  
@@ -43,7 +43,7 @@ La propuesta se adapta al contexto y a los objetivos de cada institución, mante
 
 ## 🌐 Sitio web
 
-La landing del proyecto está publicada en GitHub Pages:
+La página del proyecto está publicada en GitHub Pages:
 
 👉 [https://lisandromeinet.github.io/juegos-narrativos/](https://lisandromeinet.github.io/aventuras-en-juego/)
 
@@ -53,9 +53,9 @@ Este repositorio contiene el código fuente del sitio web (HTML + CSS + assets).
 
 ## 📁 Contenido del repositorio
 
-- `index.html` → página principal del proyecto  
-- `pergamino.jpg` → fondo estilo pergamino  
-- `dragon-rojo.png` → ilustración de dragón (silueta)  
+- `index.html` → página principal del proyecto
+- `pergamino.jpg` → fondo estilo pergamino
+- `dragon-rojo.png` → ilustración de dragón (silueta)
 
 El sitio es **estático**, sin frameworks ni dependencias externas.
 
@@ -70,14 +70,21 @@ Psicólogo – Coordinador de juegos narrativos y de rol
 - 📷 Instagram: [@AventurasEnJuego](https://instagram.com/AventurasEnJuego)  
 - ✉️ Email: lmeinetpallares@gmail.com  
 
+## 👤 Colaborador metodológico y técnico
+
+**Ing. Pablo Tortorella**  
+Ingeniero en Informática - Agile Coach - Facilitador
+- ✉️ Email: pablotortorella@gmail.com
+
 ---
 
 ## 📌 Estado del proyecto
 
-- Versión inicial de la landing publicada  
-- Proyecto en etapa de difusión y validación institucional  
+- Proyecto en etapa de difusión y validación institucional
+- Página de Instagram para marketing digital y difusión
+- Versión inicial de la landing publicada
 
-El contenido y la propuesta pueden evolucionar con el aprendizaje de las primeras implementaciones.
+El contenido y la propuesta pueden evolucionar (¡y seguro evolucionarán!) con el aprendizaje de las primeras implementaciones.
 
 ---
 
